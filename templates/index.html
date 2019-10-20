@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+
+{% block header %}
+<h1>iCalculator</h1>
+<p>Python<br>Edition</p>
+{% endblock %}
+
+
+{% block main %}
+
+
+<form action="{{ url_for("main") }}" method="POST">
+    <!-- zona de Resultado-->
+    <p class="result">REsultado:
+        <!-- Escritura botones -->
+        <input class="noseleccionable" id="expresion" name="expresion" type="text" value="{{ resultadoIndex }}"
+            readonly="readonly" size="40">
+    </p>
+
+    <!-- Botones-->
+    <!-- operadores + - * / -->
+    <div class="buttons-container">
+
+        <!--posisicion reset ---- -->
+        <button type="button" class="button operador small" onclick="add(this.value)" value="+">+</button>
+        <!-- operador mas -->
+        <button type="button" class="button operador small" onclick="add(this.value)" value="-">-</button>
+        <!-- operador menos -->
+        <button type="button" class="button operador small" onclick="add(this.value)" value="*">*</button>
+        <!-- operador multiplicar -->
+        <button type="button" class="button operador small" onclick="add(this.value)" value="/">/</button>
+        <!-- operador dividir -->
+
+
+
+        <button type="button" class="button small" onclick="add(this.value)" value="1">1</button>
+        <button type="button" class="button small" onclick="add(this.value)" value="2">2</button>
+        <button type="button" class="button small" onclick="add(this.value)" value="3">3</button>
+        <button type="button" class="button small" onclick="add(this.value)" value="4">4</button>
+        <button type="button" class="button small" onclick="add(this.value)" value="5">5</button>
+        <button type="button" class="button small" onclick="add(this.value)" value="6">6</button>
+        <button type="button" class="button small" onclick="add(this.value)" value="7">7</button>
+        <button type="button" class="button small" onclick="add(this.value)" value="8">8</button>
+        <button type="button" class="button small" onclick="add(this.value)" value="9">9</button>
+        <button type="button" class="button medium" onclick="add(this.value)" value="0">0</button>
+        <button type="button" class="button small" onclick="add(this.value)" value=".">.</button>
+
+
+    </div>
+
+    <button type="submit" class="button big">=</button>
+
+
+</form>
+
+<button type="button" class="button operador big" onclick="reset();">BORRAR</button> <!-- operador borrador -->
+
+<script>
+    const expresionInput = document.getElementById("expresion");
+
+    function add(par) {
+        expresionInput.value += par;
+
+
+    }
+
+    function reset() {
+        expresionInput.value = "";
+        // expresionInput.value = "uuu";
+
+    }
+
+</script>
+
+{% endblock %}
